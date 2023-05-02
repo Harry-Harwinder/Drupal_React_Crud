@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import {Buffer} from 'buffer';
@@ -69,12 +69,13 @@ function App() {
     const nodeData = {
       type: [
         {
-          target_id: "crudd_operation",
+          target_id: "new_crudd",
         },
       ],
+      
       title: [
         {
-          value: "static",
+          value: firstName + " " + lastName,
         },
       ],
       field_first_name: [
@@ -104,22 +105,23 @@ function App() {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://localhost/24-04-2023/crud_operation/web/node?_format=json',
+      url: 'http://localhost/02-05-2023/new_crudd/web/node?_format=json',
       headers: { 
-        'Content-Type': 'application/json', 
-        'X-CSRF-Token': '5JGUd1OHjR3TyVUOC5rZuawcCxInVwUq3-xW8l_SpdQ', 
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDE0NDJjYjIxODc2ZmJjZDZlNGE5ZTQiLCJpYXQiOjE2NzkwNDk0MzV9._92uXiaOwmXRUQPbGJ80lUXs5XT40O7KVxLGuxnnwHM', 
-        'Cookie': 'SESSd62e1bffad2d208e6ae1e4abf6c9ff26=0UALmPrilJoBU0lL5EHKO39rL4xWLY1XfzxFXA96Q9Qhsv0P'
-      },
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "X-CSRF-Token": "8F_CgR5OdZH9UxHbgrgEGCeIKKYEl8ob2ZKbYK3h3QE",
+          'Cookie': 'SESSd62e1bffad2d208e6ae1e4abf6c9ff26=0UALmPrilJoBU0lL5EHKO39rL4xWLY1XfzxFXA96Q9Qhsv0P',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDE0NDJjYjIxODc2ZmJjZDZlNGE5ZTQiLCJpYXQiOjE2NzkwNDk0MzV9._92uXiaOwmXRUQPbGJ80lUXs5XT40O7KVxLGuxnnwHM', 
+        },
       data : data
     };
     
     axios.request(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data));
+      console.log(JSON.stringify(response.data),'HELLO');
     })
     .catch((error) => {
-      console.log(error);
+      console.log('error',error);
     });
   };
 
