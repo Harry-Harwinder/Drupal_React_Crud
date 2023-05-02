@@ -118,6 +118,8 @@ function App() {
     
     axios.request(config)
     .then((response) => {
+      navigate("/display");
+
       console.log(JSON.stringify(response.data),'HELLO');
     })
     .catch((error) => {
@@ -166,7 +168,6 @@ function App() {
         type="submit"
         color="primary"
         className={classes.button}
-        // onClick={navigateToContacts}
       >
         Submit{" "}
       </Button>{" "}
